@@ -3594,6 +3594,7 @@
     <Content Include="assets\plugins\timepicker\bootstrap-timepicker.min.css" />
     <Content Include="assets\plugins\timepicker\bootstrap-timepicker.min.js" />
     <Content Include="default.aspx" />
+    <Content Include="view\category\category.aspx" />
     <Content Include="view\dashboard.aspx" />
     <Content Include="view\manage-category.aspx" />
     <Content Include="view\manage-orders.aspx" />
@@ -3618,6 +3619,13 @@
     </Compile>
     <Compile Include="view\BigKisanMaster.Master.designer.cs">
       <DependentUpon>BigKisanMaster.Master</DependentUpon>
+    </Compile>
+    <Compile Include="view\category\category.aspx.cs">
+      <DependentUpon>category.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="view\category\category.aspx.designer.cs">
+      <DependentUpon>category.aspx</DependentUpon>
     </Compile>
     <Compile Include="view\dashboard.aspx.cs">
       <DependentUpon>dashboard.aspx</DependentUpon>
@@ -4039,6 +4047,9 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="model\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
