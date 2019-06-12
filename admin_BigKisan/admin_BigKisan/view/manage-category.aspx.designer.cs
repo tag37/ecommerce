@@ -22,15 +22,6 @@ namespace admin_BigKisan.view {
         protected global::System.Web.UI.WebControls.DropDownList ddlParentCategory;
         
         /// <summary>
-        /// RequiredFieldValidator2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
-        
-        /// <summary>
         /// txtName control.
         /// </summary>
         /// <remarks>

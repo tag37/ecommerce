@@ -23,19 +23,14 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <asp:Label runat="server" for="exampleInputPassword1">Parent Category *</asp:Label>
+                                        <asp:Label runat="server" for="exampleInputPassword1">Parent Category</asp:Label>
                                         <div class="input-group">
                                             <div class="input-group-addon">
                                                 <i class="fa fa-info"></i>
                                             </div>
                                             <asp:DropDownList runat="server" type="text" class="form-control" ID="ddlParentCategory">
-                                                <asp:ListItem>Select</asp:ListItem>
-                                                <asp:ListItem>Make this parent</asp:ListItem>
-                                                <asp:ListItem>Parent Category 1</asp:ListItem>
-                                                <asp:ListItem>Parent Category 2</asp:ListItem>
                                             </asp:DropDownList>
                                         </div>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtName" ForeColor="Red" Display="Dynamic" ErrorMessage="This field cant be empty."></asp:RequiredFieldValidator>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -54,7 +49,6 @@
                                     <asp:Label runat="server" for="exampleInputPassword1">.</asp:Label>
                                     <div class="form-group">
                                         <asp:LinkButton runat="server" CssClass="btn btn-success" ID="lbtnSubmit"><i class="fa fa-check"></i>&nbsp;Submit</asp:LinkButton>
-                                        <a href="category/category.aspx?add" class="btn btn-success"><i class="fa fa-plus"></i>&nbsp;Add</a>
                                     </div>
                                 </div>
 
