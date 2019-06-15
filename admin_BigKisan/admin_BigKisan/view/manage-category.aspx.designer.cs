@@ -22,13 +22,22 @@ namespace admin_BigKisan.view {
         protected global::System.Web.UI.WebControls.DropDownList ddlParentCategory;
         
         /// <summary>
-        /// txtName control.
+        /// dataSourceDdlParentCategory control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtName;
+        protected global::System.Web.UI.WebControls.SqlDataSource dataSourceDdlParentCategory;
+        
+        /// <summary>
+        /// txtCategoryName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCategoryName;
         
         /// <summary>
         /// RequiredFieldValidator1 control.
@@ -40,22 +49,40 @@ namespace admin_BigKisan.view {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
         
         /// <summary>
-        /// lbtnSubmit control.
+        /// btnSubmit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbtnSubmit;
+        protected global::System.Web.UI.WebControls.LinkButton btnSubmit;
         
         /// <summary>
-        /// dgvDetails control.
+        /// updatePanelGvCategoryList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView dgvDetails;
+        protected global::System.Web.UI.UpdatePanel updatePanelGvCategoryList;
+        
+        /// <summary>
+        /// gvCategoryList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvCategoryList;
+        
+        /// <summary>
+        /// DataSourceGvCategoryList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource DataSourceGvCategoryList;
         
         /// <summary>
         /// hdnCategoryID control.
