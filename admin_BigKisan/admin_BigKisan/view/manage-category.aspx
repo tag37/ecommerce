@@ -52,7 +52,9 @@
                                         <div class="col-md-4">
                                             <asp:Label runat="server" for="exampleInputPassword1">.</asp:Label>
                                             <div class="form-group">
-                                                <asp:LinkButton runat="server" CssClass="btn btn-success" ID="btnSubmit" OnClick="btnSubmit_OnClick"><i class="fa fa-check"></i>&nbsp;Submit</asp:LinkButton>
+                                                <asp:LinkButton runat="server" CssClass="btn btn-success" ID="btnSubmit" OnClick="btnSubmit_OnClick"><i class="fa fa-plus"></i>&nbsp;Create Category</asp:LinkButton>
+                                                <asp:LinkButton runat="server" CssClass="btn btn-success" Visible="False" ID="btnUpdateCategory" OnClick="btnUpdateCategory_OnClick"><i class="fa fa-check"></i>&nbsp;Update Category</asp:LinkButton>
+                                                <asp:LinkButton runat="server" CssClass="btn btn-default" CausesValidation="False" ID="btnCancel" OnClick="btnCancel_OnClick"><i class="fa fa-close"></i>&nbsp;Cancel</asp:LinkButton>
                                             </div>
                                         </div>
                                     </ContentTemplate>

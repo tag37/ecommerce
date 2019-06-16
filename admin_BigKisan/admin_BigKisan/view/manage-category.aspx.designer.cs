@@ -58,6 +58,24 @@ namespace admin_BigKisan.view {
         protected global::System.Web.UI.WebControls.LinkButton btnSubmit;
         
         /// <summary>
+        /// btnUpdateCategory control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnUpdateCategory;
+        
+        /// <summary>
+        /// btnCancel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnCancel;
+        
+        /// <summary>
         /// updatePanelGvCategoryList control.
         /// </summary>
         /// <remarks>
