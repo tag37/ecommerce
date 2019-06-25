@@ -8,11 +8,16 @@
         {
             if (value != null && !string.IsNullOrEmpty(value.ToString()))
             {
-                if (!int.TryParse(value.ToString(), out var outValue))
-                {
-                    return defaultValue;
-                }
-                return outValue;
+                return !int.TryParse(value.ToString(), out var outValue) ? defaultValue : outValue;
+            }
+            return defaultValue;
+        }
+
+        public static decimal TryGetDecimal(this object value, int defaultValue = 0)
+        {
+            if (value != null && !string.IsNullOrEmpty(value.ToString()))
+            {
+                return !decimal.TryParse(value.ToString(), out var outValue) ? defaultValue : outValue;
             }
             return defaultValue;
         }
@@ -21,11 +26,7 @@
         {
             if (value != null && !string.IsNullOrEmpty(value.ToString()))
             {
-                if (!bool.TryParse(value.ToString(), out var outValue))
-                {
-                    return defaultValue;
-                }
-                return outValue;
+                return !bool.TryParse(value.ToString(), out var outValue) ? defaultValue : outValue;
             }
             return defaultValue;
         }

@@ -3411,6 +3411,7 @@
     <Content Include="assets\css\alt\AdminLTE-select2.min.css" />
     <Content Include="assets\css\alt\AdminLTE-without-plugins.css" />
     <Content Include="assets\css\alt\AdminLTE-without-plugins.min.css" />
+    <Content Include="assets\css\jquery.toast.css" />
     <Content Include="assets\css\skins\skin-black-light.css" />
     <Content Include="assets\css\skins\skin-black-light.min.css" />
     <Content Include="assets\css\skins\skin-black.css" />
@@ -3447,9 +3448,12 @@
     <Content Include="assets\img\logo.png" />
     <Content Include="assets\js\adminlte.js" />
     <Content Include="assets\js\adminlte.min.js" />
+    <Content Include="assets\js\common.js" />
     <Content Include="assets\js\demo.js" />
+    <Content Include="assets\js\jquery.min.js" />
     <Content Include="assets\js\pages\dashboard.js" />
     <Content Include="assets\js\pages\dashboard2.js" />
+    <Content Include="assets\js\jquery.toast.js" />
     <Content Include="assets\Photo\683e73db-1078-4c33-b65d-009b0a2a63c5.png" />
     <Content Include="assets\plugins\bootstrap-slider\bootstrap-slider.js" />
     <Content Include="assets\plugins\bootstrap-slider\slider.css" />
@@ -3594,6 +3598,7 @@
     <Content Include="assets\plugins\timepicker\bootstrap-timepicker.min.css" />
     <Content Include="assets\plugins\timepicker\bootstrap-timepicker.min.js" />
     <Content Include="default.aspx" />
+    <Content Include="view\add-product.aspx" />
     <Content Include="view\category\category.aspx" />
     <Content Include="view\dashboard.aspx" />
     <Content Include="view\manage-category.aspx" />
@@ -3614,9 +3619,17 @@
     </Compile>
     <Compile Include="model\Category.cs" />
     <Compile Include="model\ParentCategory.cs" />
+    <Compile Include="model\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="util\SqlHelper.cs" />
     <Compile Include="util\Util.cs" />
+    <Compile Include="view\add-product.aspx.cs">
+      <DependentUpon>add-product.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="view\add-product.aspx.designer.cs">
+      <DependentUpon>add-product.aspx</DependentUpon>
+    </Compile>
     <Compile Include="view\BigKisanMaster.Master.cs">
       <DependentUpon>BigKisanMaster.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

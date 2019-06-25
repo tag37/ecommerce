@@ -27,16 +27,18 @@
     <link rel="stylesheet" href="../assets/bower_components/bootstrap-daterangepicker/daterangepicker.css">
     <!-- bootstrap wysihtml5 - text editor -->
     <link rel="stylesheet" href="../assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
-
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <link href="../assets/css/jquery.toast.css" rel="stylesheet" />
     <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
 
+  <![endif]-->
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+
     <style>
         .btn-primary:hover {
             background: white;
@@ -127,6 +129,7 @@
             <!-- Left side column. contains the logo and sidebar -->
             <aside class="main-sidebar">
                 <!-- sidebar: style can be found in sidebar.less -->
+
                 <section class="sidebar">
                     <!-- Sidebar user panel -->
                     <%--<div class="user-panel">
@@ -148,7 +151,7 @@
                         <li><a href="supplier-approval.aspx"><i class="fa fa-check"></i><span>Supplier Approval</span></a></li>
                         <li><a href="manage-category.aspx"><i class="fa fa-files-o"></i><span>Manage Categories</span></a></li>
                         <li><a href="manage-products.aspx"><i class="fa fa-shopping-bag"></i><span>Manage Products</span></a></li>
-                        <li><a href="#"><i class="fa fa-product-hunt"></i><span>Add Products</span></a></li>
+                        <li><a href="add-product.aspx"><i class="fa fa-product-hunt"></i><span>Add Products</span></a></li>
                         <li><a href="product-inward.aspx"><i class="fa fa-info"></i><span>Inwards - Add Stock</span></a></li>
                         <li><a href="#"><i class="fa fa-check-circle"></i><span>Products Approval</span></a></li>
                         <li class="treeview">
@@ -174,7 +177,8 @@
             </aside>
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">
-                <asp:ContentPlaceHolder ID="MainContent" runat="server" >
+
+                <asp:ContentPlaceHolder ID="MainContent" runat="server">
                 </asp:ContentPlaceHolder>
             </div>
             <!-- /.content-wrapper -->
@@ -205,11 +209,14 @@
     <!-- SlimScroll -->
     <script src="../assets/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
     <!-- ChartJS -->
-    <script src="../assets/bower_components/chart.js/Chart.js"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="../assets/js/pages/dashboard2.js"></script>
     <!-- AdminLTE for demo purposes -->
+
     <script src="../assets/js/demo.js"></script>
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/jquery.toast.js" type="text/javascript"></script>
+    <script src="../assets/js/common.js"></script>
     <asp:ContentPlaceHolder ID="JavascriptContent" runat="server">
     </asp:ContentPlaceHolder>
 </body>
