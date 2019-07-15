@@ -3412,6 +3412,7 @@
     <Content Include="assets\css\alt\AdminLTE-without-plugins.css" />
     <Content Include="assets\css\alt\AdminLTE-without-plugins.min.css" />
     <Content Include="assets\css\jquery.toast.css" />
+    <Content Include="assets\css\pagination.css" />
     <Content Include="assets\css\skins\skin-black-light.css" />
     <Content Include="assets\css\skins\skin-black-light.min.css" />
     <Content Include="assets\css\skins\skin-black.css" />
