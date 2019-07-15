@@ -24,20 +24,13 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Product Name</label>
-                                        <div class="input-group">
-                                            <asp:TextBox runat="server" CssClass="form-control" ID="txtProductName" placeholder="Product Name" />
-                                            <div class="input-group-btn">
-                                                <div class="btn-group" role="group">
-                                                    <asp:LinkButton runat="server" data-placement="top" title="search product" type="button" class="btn btn-primary" data-toggle="modal" data-target="#addProducts" ID="LinkButton2" CausesValidation="False"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></asp:LinkButton>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <asp:TextBox runat="server" CssClass="form-control" ID="txtProductName" placeholder="Product Name" />
                                         <asp:HiddenField runat="server" ID="hdnTxtProduct" />
                                         <asp:RequiredFieldValidator ID="rfv" runat="Server" ControlToValidate="txtProductName" ErrorMessage="Product Name is required" ForeColor="Red" Display="Dynamic" />
                                     </div>
                                     <div class="form-group">
                                         <label>Category</label>
-                                        <asp:DropDownList runat="server" CssClass="form-control" ID="ddlCategory" placeholder="Category" DataSourceID="dataSourceDdlCategory" DataTextField="CategoryName" DataValueField="CategoryId" AppendDataBoundItems="True">
+                                        <asp:DropDownList runat="server" CssClass="form-control" ID="ddlCategory" placeholder="Category" DataSourceID="dataSourceDdlCategory" DataTextField="CategoryName" DataValueField="CategoryId" AppendDataBoundItems="True" AutoPostBack="True" OnSelectedIndexChanged="ddlCategory_OnSelectedIndexChanged">
                                             <Items>
                                                 <asp:ListItem Selected="True" Value="0" Text="--- Select ---"></asp:ListItem>
                                             </Items>
@@ -46,15 +39,20 @@
                                         <asp:RequiredFieldValidator runat="server" ControlToValidate="ddlCategory" ErrorMessage="Please select category" ForeColor="Red" InitialValue="0" Display="Dynamic"></asp:RequiredFieldValidator>
                                     </div>
                                     <div class="form-group">
-                                        <label>SKU</label>
-                                        <asp:TextBox runat="server" CssClass="form-control" ID="txtSKU" placeholder="SKU" />
-                                        <asp:RequiredFieldValidator ID="rfSku" runat="Server" ControlToValidate="txtSKU" ErrorMessage="SKU required" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
+                                        <label>Brand</label>
+                                        <asp:TextBox runat="server" CssClass="form-control" ID="txtBrand" placeholder="Brand" />
+                                        <asp:RequiredFieldValidator runat="server" ControlToValidate="txtBrand" ErrorMessage="Brand is required" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
                                     </div>
                                     <div class="form-group">
-                                        <label>Product Image</label>
-                                        <asp:FileUpload runat="server" ID="FileUpload1" CssClass="form-control" />
+                                        <label>SKU</label>
+                                        <asp:TextBox runat="server" CssClass="form-control" ID="txtSKU" placeholder="SKU" />
                                     </div>
-                                    <div class="form-check">
+                                    <div class="form-group">
+                                        <label>Short Description</label>
+                                        <asp:TextBox TextMode="MultiLine" runat="server" CssClass="form-control" ID="txtShortDesc" placeholder="Short Description" />
+                                    </div>
+
+                                    <div class="form-group">
                                         <asp:CheckBox type="checkbox" CssClass="form-check-input" ID="chkIsNew" runat="server" />
                                         <label class="form-check-label">Is New</label>
                                         <asp:CheckBox type="checkbox" CssClass="form-check-input" ID="chkIsHot" runat="server" />
@@ -65,7 +63,6 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                    
                                         <label>Supplier</label>
                                         <asp:DropDownList runat="server" CssClass="form-control" ID="ddlSupplier" placeholder="Supplier" DataTextField="SellerName" DataValueField="SellerId" DataSourceID="sqlDataSourceDdlSupplier" AppendDataBoundItems="True">
                                             <Items>
@@ -77,22 +74,101 @@
                                                 <asp:Parameter Name="Dropdown" DefaultValue="1" />
                                             </SelectParameters>
                                         </asp:SqlDataSource>
-                                        <%--<asp:RequiredFieldValidator ID="re1" runat="Server" ControlToValidate="ddlSupplier" InitialValue="0" ErrorMessage="Please select supplier" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>--%>
+                                        <asp:RequiredFieldValidator runat="server" ControlToValidate="ddlSupplier" ErrorMessage="Please select supplier" ForeColor="Red" InitialValue="0" Display="Dynamic"></asp:RequiredFieldValidator>
                                     </div>
                                     <div class="form-group">
                                         <label>Price</label>
                                         <asp:TextBox runat="server" CssClass="form-control" ID="txtPrice" placeholder="Price" />
-                                        <%--<asp:RequiredFieldValidator runat="server" ControlToValidate="txtPrice" ErrorMessage="Price is required" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>--%>
-                                        <%--<asp:RegularExpressionValidator runat="server" ValidationExpression="(^\d*\.?\d*[1-9]+\d*$)|(^[1-9]+\d*\.\d*$)" ControlToValidate="txtPrice" Display="Dynamic" ErrorMessage="Incorrect Price" ForeColor="Red"></asp:RegularExpressionValidator>--%>
+                                        <asp:RequiredFieldValidator runat="server" ControlToValidate="txtMRP" ErrorMessage="MRP is required" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
+                                        <asp:RegularExpressionValidator runat="server" ValidationExpression="(^\d*\.?\d*[1-9]+\d*$)|(^[1-9]+\d*\.\d*$)" ControlToValidate="txtMRP" Display="Dynamic" ErrorMessage="Incorrect Price" ForeColor="Red"></asp:RegularExpressionValidator>
                                     </div>
                                     <div class="form-group">
                                         <label>MRP</label>
                                         <asp:TextBox runat="server" CssClass="form-control" ID="txtMRP" placeholder="MRP" />
-                                        <%--<asp:RequiredFieldValidator runat="server" ControlToValidate="txtMRP" ErrorMessage="MRP is required" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>--%>
-                                       <%-- <asp:RegularExpressionValidator runat="server" ValidationExpression="(^\d*\.?\d*[1-9]+\d*$)|(^[1-9]+\d*\.\d*$)" ControlToValidate="txtMRP" Display="Dynamic" ErrorMessage="Incorrect MRP" ForeColor="Red"></asp:RegularExpressionValidator>--%>
+                                        <asp:RequiredFieldValidator runat="server" ControlToValidate="txtMRP" ErrorMessage="MRP is required" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
+                                        <asp:RegularExpressionValidator runat="server" ValidationExpression="(^\d*\.?\d*[1-9]+\d*$)|(^[1-9]+\d*\.\d*$)" ControlToValidate="txtMRP" Display="Dynamic" ErrorMessage="Incorrect MRP" ForeColor="Red"></asp:RegularExpressionValidator>
                                     </div>
                                     <div class="form-group">
-                                        <br />
+                                        <label>Available Stock</label>
+                                        <asp:TextBox runat="server" CssClass="form-control" ID="txtStock" placeholder="Available Stock" />
+                                        <asp:RegularExpressionValidator runat="server" ValidationExpression="(^\d*\.?\d*[1-9]+\d*$)|(^[1-9]+\d*\.\d*$)" ControlToValidate="txtStock" Display="Dynamic" ErrorMessage="Incorrect Stock" ForeColor="Red"></asp:RegularExpressionValidator>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Product Image</label>
+                                        <asp:FileUpload runat="server" ID="FileUpload1" CssClass="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                    <asp:UpdatePanel runat="server" ID="upProductAttributes">
+                        <ContentTemplate>
+                            <div class="box-body">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Product Attribute</label>
+                                        <asp:DropDownList runat="server" CssClass="form-control" ID="ddlAttributes" DataSourceID="sqlProductAttributes" DataTextField="AttributeName" DataValueField="AttributeId" AppendDataBoundItems="false">
+                                            <Items>
+                                                <asp:ListItem Selected="True" Value="0" Text="--- Select ---"></asp:ListItem>
+                                            </Items>
+                                        </asp:DropDownList>
+                                        <asp:SqlDataSource ID="sqlProductAttributes"
+                                            ConnectionString="<%$ ConnectionStrings:ConnectionString %>"
+                                            SelectCommand="SELECT a.AttributeId,a.AttributeName from tblCategoryAttributes CA INNER JOIN tblCategory T ON T.CategoryId = CA.CategoryId INNER JOIN tblAttribute A ON A.AttributeId= CA.AttributeId WHERE CA.CategoryId = @Category"
+                                            SelectCommandType="Text" runat="server">
+                                            <SelectParameters>
+                                                <asp:ControlParameter ControlID="ddlCategory" PropertyName="SelectedValue" Name="Category" DefaultValue="0" />
+                                            </SelectParameters>
+                                        </asp:SqlDataSource>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Value</label>
+                                        <div class="input-group">
+                                            <asp:TextBox runat="server" CssClass="form-control" ID="txtAttributeValue" placeholder="Value" />
+                                            <div class="input-group-btn">
+                                                <div class="btn-group" role="group">
+                                                    <asp:LinkButton runat="server" data-placement="top" title="Add field" class="btn btn-primary" ID="btnAddFields" CausesValidation="false" OnClick="btnAddFields_OnClick"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></asp:LinkButton>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="box-body">
+                                <div class="col-md-8">
+                                    <asp:GridView runat="server" ID="gvAttributes" AutoGenerateColumns="false" CssClass="table table-condensed" ShowHeaderWhenEmpty="true"
+                                        DataKeyNames="AttributeId" EmptyDataRowStyle-Font-Bold="true" EmptyDataRowStyle-ForeColor="Red">
+                                        <Columns>
+                                            <asp:TemplateField HeaderText="Sr No">
+                                                <ItemTemplate>
+                                                    <%#Container.DataItemIndex+1 %>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:TemplateField HeaderText="Attribute Name">
+                                                <ItemTemplate>
+                                                    <%# Eval("AttributeName") %>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:TemplateField HeaderText="Attribute Value">
+                                                <ItemTemplate>
+                                                    <%# Eval("AttributeValue") %>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:TemplateField HeaderText="Action" HeaderStyle-Width="10%">
+                                                <ItemTemplate>
+                                                    <asp:LinkButton runat="server" CausesValidation="false" ID="btnDeleteAttribute" OnClick="btnDeleteAttribute_OnClick" CssClass="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></asp:LinkButton>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                        </Columns>
+                                    </asp:GridView>
+                                </div>
+                            </div>
+                            <div class="box-body">
+                                <div class="col-md-12">
+                                    <div class="form-group text-right">
                                         <asp:LinkButton runat="server" ID="btnSubmit" OnClick="btnSubmit_OnClick" CssClass="btn btn-primary"><i class="fa fa-check"></i>&nbsp;Submit</asp:LinkButton>
                                         <asp:LinkButton runat="server" ID="btnReset" CssClass="btn btn-warning" OnClick="btnReset_OnClick" CausesValidation="False"><i class="fa fa-times"></i>&nbsp;Cancel</asp:LinkButton>
                                     </div>
@@ -100,74 +176,6 @@
                             </div>
                         </ContentTemplate>
                     </asp:UpdatePanel>
-
-                    <div class="modal fade" id="addProducts" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header bg-blue-active">
-                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                    <h4 class="modal-title text-bold" id="myModalLabel">Products</h4>
-                                </div>
-                                <asp:UpdatePanel runat="server">
-                                    <ContentTemplate>
-                                        <div class="modal-body">
-                                            <div class="row">
-                                                <div class="col-md-10">
-                                                    <div class="form-group">
-                                                        <div class="input-group" id="adv-search">
-                                                            <asp:TextBox runat="server" ID="txtPName" type="text" CssClass="form-control" placeholder="Search Product" />
-                                                            <div class="input-group-btn">
-                                                                <div class="btn-group" role="group">
-                                                                    <asp:LinkButton runat="server" type="button" class="btn btn-primary" ID="btnSearch" OnClick="btnSearch_OnClick" CausesValidation="False"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></asp:LinkButton>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <asp:GridView runat="server" ID="gvProductList" AutoGenerateColumns="false" CssClass="table table-bordered table-responsive " ShowHeaderWhenEmpty="true" DataSourceID="DataSourceGvProducts" PageSize="10"
-                                                DataKeyNames="ProductId" EmptyDataText="No data available">
-                                                <Columns>
-                                                    <asp:TemplateField>
-                                                        <ItemTemplate>
-                                                            <asp:HiddenField runat="server" ID="hdfProductId" Value='<%# Eval("ProductId") + "$" + Eval("ProductName")+ "$"+ Eval("CategoryId") %>' />
-                                                        </ItemTemplate>
-                                                    </asp:TemplateField>
-                                                    <asp:TemplateField HeaderText="Sr No">
-                                                        <ItemTemplate>
-                                                            <%#Container.DataItemIndex+1 %>
-                                                        </ItemTemplate>
-                                                    </asp:TemplateField>
-                                                    <asp:TemplateField>
-                                                        <ItemTemplate>
-                                                            <asp:RadioButton AutoPostBack="True" runat="server" ID="radioProduct" OnCheckedChanged="radioProduct_OnCheckedChanged"></asp:RadioButton>
-                                                        </ItemTemplate>
-                                                    </asp:TemplateField>
-                                                    <asp:BoundField DataField="ProductName" HeaderText="Product Name" />
-                                                    <asp:BoundField DataField="CategoryName" HeaderText="Category Name" />
-                                                </Columns>
-                                            </asp:GridView>
-                                            <asp:SqlDataSource ID="DataSourceGvProducts" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="spProductGetAll" SelectCommandType="StoredProcedure" runat="server">
-                                                <SelectParameters>
-                                                    <asp:Parameter Name="Dropdown" DefaultValue="1" />
-                                                    <asp:ControlParameter Name="SearchText" ControlID="txtPName" PropertyName="Text" DefaultValue="" />
-                                                </SelectParameters>
-                                            </asp:SqlDataSource>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <asp:LinkButton ID="btnSelectProduct" OnClick="btnSelectProduct_OnClick" CssClass="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Choose product from search result" runat="server" CausesValidation="False"><span class="glyphicon glyphicon-download" aria-hidden="true"></span>&nbsp; Select
-                                            </asp:LinkButton>
-                                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-close" aria-hidden="true"></i>&nbsp;Close</button>
-                                        </div>
-                                    </ContentTemplate>
-                                </asp:UpdatePanel>
-
-                            </div>
-                        </div>
-                    </div>
-
-
                 </div>
             </div>
         </div>
