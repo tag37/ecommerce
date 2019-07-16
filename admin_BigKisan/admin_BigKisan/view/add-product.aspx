@@ -139,7 +139,8 @@
                             </div>
                             <div class="box-body">
                                 <div class="col-md-8">
-                                    <asp:GridView runat="server" ID="gvAttributes" AutoGenerateColumns="false" CssClass="table table-condensed" ShowHeaderWhenEmpty="true"
+
+                                    <asp:GridView runat="server" ID="gvAttributes" AutoGenerateColumns="false" CssClass="table table-bordered table-striped"
                                         DataKeyNames="AttributeId" EmptyDataRowStyle-Font-Bold="true" EmptyDataRowStyle-ForeColor="Red">
                                         <Columns>
                                             <asp:TemplateField HeaderText="Sr No">
@@ -159,11 +160,12 @@
                                             </asp:TemplateField>
                                             <asp:TemplateField HeaderText="Action" HeaderStyle-Width="10%">
                                                 <ItemTemplate>
-                                                    <asp:LinkButton runat="server" CausesValidation="false" ID="btnDeleteAttribute" OnClick="btnDeleteAttribute_OnClick" CssClass="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></asp:LinkButton>
+                                                    <asp:LinkButton runat="server" CausesValidation="false" ID="btnDeleteAttribute" OnClick="btnDeleteAttribute_OnClick" CssClass="btn"><i class="fa fa-trash-o text-red"></i></asp:LinkButton>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
                                         </Columns>
                                     </asp:GridView>
+
                                 </div>
                             </div>
                             <div class="box-body">

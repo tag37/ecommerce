@@ -87,5 +87,60 @@ namespace admin_BigKisan.model
                 }
             }
         }
+
+        public static Product GetProduct(int productId)
+        {
+            object[] sqlParameters = {
+                new SqlParameter("@ProductId", productId)
+            };
+            var result = SqlHelper.ExecuteDataset(Util.ConnectionString, "spProductGet", sqlParameters);
+
+            var dtProduct = result.Tables[0];
+            var product = new Product
+            {
+                ProductName = dtProduct.Rows[0]["ProductName"].ToString(),
+                CategoryId = dtProduct.Rows[0]["CategoryId"].TryGetInt(),
+                SellerId = dtProduct.Rows[0]["SellerID"].TryGetInt(),
+                Brand = dtProduct.Rows[0]["BrandName"].ToString(),
+                ProductSku = dtProduct.Rows[0]["ProductSKU"].ToString(),
+                ShortDesc = dtProduct.Rows[0]["ShortDesciption"].ToString(),
+                Price = dtProduct.Rows[0]["Price"].TryGetDecimal(),
+                Mrp = dtProduct.Rows[0]["MRP"].TryGetDecimal(),
+                AvailableStock = dtProduct.Rows[0]["AvailableStock"].TryGetInt(),
+                IsNew = dtProduct.Rows[0]["IsNew"].TryGetBool(),
+                IsHot = dtProduct.Rows[0]["IsHot"].TryGetBool(),
+                IsTrending = dtProduct.Rows[0]["IsTrending"].TryGetBool()
+            };
+
+            return product;
+        }
+
+        public static DataTable GetProductAttributes(int productId, int categoryId)
+        {
+            var tblProductAttributes = new DataTable("tblProductAttributes");
+            tblProductAttributes.Columns.Add("AttributeId");
+            tblProductAttributes.Columns.Add("AttributeName");
+            tblProductAttributes.Columns.Add("AttributeValue");
+
+            object[] sqlParameters = {
+                new SqlParameter("@ProductId", productId),
+                new SqlParameter("@CategoryId", categoryId)
+            };
+            var result = SqlHelper.ExecuteDataset(Util.ConnectionString, "spGetProductAttributes", sqlParameters);
+
+            var dtAttribute = result.Tables[0];
+
+            foreach (DataRow dtAttributeRow in dtAttribute.Rows)
+            {
+                var row = tblProductAttributes.NewRow();
+                row["AttributeId"] = dtAttributeRow["AttributeId"];
+                row["AttributeName"] = dtAttributeRow["AttributeName"];
+                row["AttributeValue"] = dtAttributeRow["Attributevalue"];
+                tblProductAttributes.Rows.Add(row);
+            }
+
+
+            return tblProductAttributes;
+        }
     }
 }

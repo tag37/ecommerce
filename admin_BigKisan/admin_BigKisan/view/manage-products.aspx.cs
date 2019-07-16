@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
 using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace admin_BigKisan.view
@@ -23,7 +19,12 @@ namespace admin_BigKisan.view
         {
             if (e.CommandName == "Edit")
             {
-                Response.Redirect($"~/view/add-product.aspx?productId={e.CommandArgument}");
+                var cookie = new HttpCookie("ProductId")
+                {
+                    Value = e.CommandArgument.ToString()
+                };                
+                Response.Cookies.Add(cookie);
+                Response.Redirect("~/view/add-product.aspx"); ;
             }
         }
     }

@@ -2,6 +2,7 @@
 using admin_BigKisan.util;
 using System;
 using System.Data;
+using System.Globalization;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -11,7 +12,41 @@ namespace admin_BigKisan.view
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Request.Cookies["ProductId"] != null)
+            {
+                var productId = Request.Cookies["ProductId"].Value;
+                Response.Cookies["ProductId"].Expires = DateTime.Now.AddDays(-1);
+                FillProduct(productId.TryGetInt());
+            }
+        }
 
+        public void FillProduct(int productId)
+        {
+            var product = Product.GetProduct(productId);
+            if (product == null)
+            {
+                return;
+            }
+
+            hdnTxtProduct.Value = productId.ToString();
+            txtProductName.Text = product.ProductName;
+            ddlCategory.SelectedValue = product.CategoryId.ToString();
+            ddlSupplier.SelectedValue = product.SellerId.ToString();
+            txtPrice.Text = product.Price.ToString(CultureInfo.InvariantCulture);
+            txtMRP.Text = product.Mrp.ToString(CultureInfo.InvariantCulture);
+            txtBrand.Text = product.Brand;
+            txtSKU.Text = product.ProductSku;
+            txtStock.Text = product.AvailableStock.ToString();
+            chkIsHot.Checked = product.IsHot;
+            chkIsNew.Checked = product.IsNew;
+            chkIsTrending.Checked = product.IsTrending;
+            txtShortDesc.Text = product.ShortDesc;
+            var dtAttributes = Product.GetProductAttributes(productId, product.CategoryId);
+            if (dtAttributes != null && dtAttributes.Rows.Count > 0)
+            {
+                ViewState["tblProductAttributes"] = dtAttributes;
+                BindProductAttributesFromViewState();
+            }
         }
 
         protected void btnSubmit_OnClick(object sender, EventArgs e)
@@ -76,6 +111,7 @@ namespace admin_BigKisan.view
             hdnTxtProduct.Value = string.Empty;
             txtBrand.Text = string.Empty;
             txtStock.Text = string.Empty;
+            txtShortDesc.Text = string.Empty;
             ViewState["tblProductAttributes"] = null;
             BindProductAttributesFromViewState();
         }
@@ -85,6 +121,7 @@ namespace admin_BigKisan.view
             gvAttributes.DataSource = ViewState["tblProductAttributes"] as DataTable;
             gvAttributes.DataBind();
         }
+
         private void SendNotificationOnUi(Control control, string function)
         {
             ScriptManager.RegisterStartupScript(control, GetType(), "disp_confirm",
@@ -94,9 +131,19 @@ namespace admin_BigKisan.view
 
         protected void ddlCategory_OnSelectedIndexChanged(object sender, EventArgs e)
         {
-            ViewState["tblProductAttributes"] = null;
-            gvAttributes.DataSource = null;
-            gvAttributes.DataBind();
+            if (!string.IsNullOrWhiteSpace(hdnTxtProduct.Value))
+            {
+                var dtAttributes = Product.GetProductAttributes(hdnTxtProduct.Value.TryGetInt(), ddlCategory.SelectedValue.TryGetInt());
+                if (dtAttributes != null && dtAttributes.Rows.Count > 0)
+                {
+                    ViewState["tblProductAttributes"] = dtAttributes;
+                }
+                else
+                {
+                    ViewState["tblProductAttributes"] = null;
+                }
+            }
+            BindProductAttributesFromViewState();
             ddlAttributes.Items.Clear();
             ddlAttributes.DataBind();
         }
@@ -156,7 +203,7 @@ namespace admin_BigKisan.view
 
         protected void btnDeleteAttribute_OnClick(object sender, EventArgs e)
         {
-            GridViewRow row = ((LinkButton)sender).NamingContainer as GridViewRow;
+            var row = ((LinkButton)sender).NamingContainer as GridViewRow;
             var dt = ViewState["tblProductAttributes"] as DataTable;
             dt.Rows.RemoveAt(row.RowIndex);
             ViewState["tblProductAttributes"] = dt;
