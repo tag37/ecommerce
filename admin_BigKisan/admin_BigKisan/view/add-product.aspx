@@ -2,8 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server"></asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <asp:ScriptManager runat="server">
-    </asp:ScriptManager>
+    <asp:ScriptManager runat="server"></asp:ScriptManager>
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>Add Product
@@ -19,6 +18,9 @@
             <div class="col-md-12">
                 <div class="box box-primary">
                     <asp:UpdatePanel runat="server" ID="upProduct">
+                        <Triggers>
+                            <asp:PostBackTrigger ControlID="btnSubmit" />
+                        </Triggers>
                         <ContentTemplate>
                             <div class="box-body">
                                 <div class="col-md-6">
@@ -95,12 +97,15 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Product Image</label>
-                                        <asp:FileUpload runat="server" ID="FileUpload1" CssClass="form-control" />
+                                        <asp:FileUpload runat="server" ID="fileUploadProduct" CssClass="form-control" />
+                                        <asp:HiddenField runat="server" ID="hiddenFileUpload" />
+                                        <asp:Image runat="server" ID="imgProduct" Height="200px" Width="200px" Visible="False" />
                                     </div>
                                 </div>
                             </div>
                         </ContentTemplate>
                     </asp:UpdatePanel>
+
                     <asp:UpdatePanel runat="server" ID="upProductAttributes">
                         <ContentTemplate>
                             <div class="box-body">

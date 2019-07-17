@@ -109,7 +109,8 @@ namespace admin_BigKisan.model
                 AvailableStock = dtProduct.Rows[0]["AvailableStock"].TryGetInt(),
                 IsNew = dtProduct.Rows[0]["IsNew"].TryGetBool(),
                 IsHot = dtProduct.Rows[0]["IsHot"].TryGetBool(),
-                IsTrending = dtProduct.Rows[0]["IsTrending"].TryGetBool()
+                IsTrending = dtProduct.Rows[0]["IsTrending"].TryGetBool(),
+                MainImage = dtProduct.Rows[0]["MainImage"].ToString()
             };
 
             return product;

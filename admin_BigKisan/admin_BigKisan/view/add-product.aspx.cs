@@ -3,6 +3,7 @@ using admin_BigKisan.util;
 using System;
 using System.Data;
 using System.Globalization;
+using System.IO;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -41,6 +42,18 @@ namespace admin_BigKisan.view
             chkIsNew.Checked = product.IsNew;
             chkIsTrending.Checked = product.IsTrending;
             txtShortDesc.Text = product.ShortDesc;
+            hiddenFileUpload.Value = product.MainImage;
+
+            if (!string.IsNullOrWhiteSpace(product.MainImage))
+            {
+                var serverPath = Server.MapPath("~/images/");
+                if (File.Exists(serverPath + product.MainImage))
+                {
+                    imgProduct.Visible = true;  
+                    imgProduct.ImageUrl = "~/images/" + product.MainImage;
+                }
+            }
+
             var dtAttributes = Product.GetProductAttributes(productId, product.CategoryId);
             if (dtAttributes != null && dtAttributes.Rows.Count > 0)
             {
@@ -63,6 +76,25 @@ namespace admin_BigKisan.view
         {
             try
             {
+                string fileName = null;
+                if (fileUploadProduct.HasFile)
+                {
+                    fileName = Guid.NewGuid() + System.IO.Path.GetExtension(fileUploadProduct.FileName);
+                    if (!Directory.Exists(Server.MapPath("~/images")))
+                    {
+                        Directory.CreateDirectory(Server.MapPath("~/images"));
+                    }
+                    fileUploadProduct.SaveAs(Server.MapPath($"~/images/{fileName}"));
+                }
+
+                if (string.IsNullOrWhiteSpace(fileName))
+                {
+                    if (!string.IsNullOrWhiteSpace(hiddenFileUpload.Value))
+                    {
+                        fileName = hiddenFileUpload.Value;
+                    }
+                }
+
                 var product = new Product
                 {
                     ProductId = hdnTxtProduct.Value.TryGetInt(),
@@ -77,7 +109,8 @@ namespace admin_BigKisan.view
                     SellerId = ddlSupplier.SelectedValue.TryGetInt(),
                     Brand = txtBrand.Text,
                     AvailableStock = txtStock.Text.TryGetInt(),
-                    ShortDesc = txtShortDesc.Text
+                    ShortDesc = txtShortDesc.Text,
+                    MainImage = fileName
                 };
 
                 product.ProductInsertUpdated();
@@ -85,8 +118,7 @@ namespace admin_BigKisan.view
                 product.AddProductAttributes(dt);
 
                 ResetValues();
-                SendNotificationOnUi(upProduct,
-                    "PopupNotification('Success', 'Product has been added into the stock.', 'Success')");
+                SendNotificationOnUi(upProduct, "PopupNotification('Success', 'Product has been added into the stock.', 'Success')");
             }
             catch (Exception exception)
             {
@@ -124,7 +156,7 @@ namespace admin_BigKisan.view
 
         private void SendNotificationOnUi(Control control, string function)
         {
-            ScriptManager.RegisterStartupScript(control, GetType(), "disp_confirm",
+            ScriptManager.RegisterClientScriptBlock(upProduct, GetType(), "disp_confirm",
                 $"<script>{function} </script>",
                 false);
         }
