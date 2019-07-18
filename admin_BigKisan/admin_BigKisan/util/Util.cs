@@ -30,5 +30,11 @@
             }
             return defaultValue;
         }
+
+        public static string GetMoney(object value)
+        {
+            return string.Format(new System.Globalization.CultureInfo("hi-IN"), "{0:c}",
+                decimal.Parse(value.ToString(), System.Globalization.CultureInfo.InvariantCulture));
+        }
     }
 }

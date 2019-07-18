@@ -29,6 +29,8 @@ namespace admin_BigKisan.view
                 return;
             }
 
+            rngValidatorStock.MinimumValue = product.AvailableStock.ToString();
+            rngValidatorStock.Enabled = true;
             hdnTxtProduct.Value = productId.ToString();
             txtProductName.Text = product.ProductName;
             ddlCategory.SelectedValue = product.CategoryId.ToString();
@@ -49,7 +51,7 @@ namespace admin_BigKisan.view
                 var serverPath = Server.MapPath("~/images/");
                 if (File.Exists(serverPath + product.MainImage))
                 {
-                    imgProduct.Visible = true;  
+                    imgProduct.Visible = true;
                     imgProduct.ImageUrl = "~/images/" + product.MainImage;
                 }
             }
@@ -145,6 +147,8 @@ namespace admin_BigKisan.view
             txtStock.Text = string.Empty;
             txtShortDesc.Text = string.Empty;
             ViewState["tblProductAttributes"] = null;
+            imgProduct.ImageUrl = String.Empty;
+            imgProduct.Visible = false;
             BindProductAttributesFromViewState();
         }
 

@@ -166,6 +166,15 @@ namespace admin_BigKisan.view {
         protected global::System.Web.UI.WebControls.TextBox txtStock;
         
         /// <summary>
+        /// rngValidatorStock control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RangeValidator rngValidatorStock;
+        
+        /// <summary>
         /// fileUploadProduct control.
         /// </summary>
         /// <remarks>

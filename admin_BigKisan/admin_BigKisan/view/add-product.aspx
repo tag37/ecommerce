@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/view/BigKisanMaster.Master" AutoEventWireup="true" CodeBehind="add-product.aspx.cs" Inherits="admin_BigKisan.view.add_product" %>
 
+<%@ Import Namespace="admin_BigKisan.util" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server"></asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <asp:ScriptManager runat="server"></asp:ScriptManager>
@@ -94,6 +96,7 @@
                                         <label>Available Stock</label>
                                         <asp:TextBox runat="server" CssClass="form-control" ID="txtStock" placeholder="Available Stock" />
                                         <asp:RegularExpressionValidator runat="server" ValidationExpression="(^\d*\.?\d*[1-9]+\d*$)|(^[1-9]+\d*\.\d*$)" ControlToValidate="txtStock" Display="Dynamic" ErrorMessage="Incorrect Stock" ForeColor="Red"></asp:RegularExpressionValidator>
+                                        <asp:RangeValidator Enabled="False" ID="rngValidatorStock" runat="server" Type="Integer" MinimumValue="0" MaximumValue="2147483647" ControlToValidate="txtStock" Display="Dynamic" ErrorMessage="Updated stock should not be more than available stock " ForeColor="Red"></asp:RangeValidator>
                                     </div>
                                     <div class="form-group">
                                         <label>Product Image</label>
@@ -102,6 +105,7 @@
                                         <asp:Image runat="server" ID="imgProduct" Height="200px" Width="200px" Visible="False" />
                                     </div>
                                 </div>
+
                             </div>
                         </ContentTemplate>
                     </asp:UpdatePanel>

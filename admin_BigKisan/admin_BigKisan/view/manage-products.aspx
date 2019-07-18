@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/view/BigKisanMaster.Master" AutoEventWireup="true" CodeBehind="manage-products.aspx.cs" Inherits="admin_BigKisan.view.manage_products" %>
 
+<%@ Import Namespace="admin_BigKisan.util" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -64,12 +66,12 @@
                                                     </asp:TemplateField>
                                                     <asp:TemplateField HeaderText="Product Price" HeaderStyle-Width="10%">
                                                         <ItemTemplate>
-                                                            <%# Eval("Price") %>
+                                                            <%# Util.GetMoney(Eval("Price"))%>
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
                                                     <asp:TemplateField HeaderText="Product MRP" HeaderStyle-Width="10%">
                                                         <ItemTemplate>
-                                                            <%# Eval("MRP") %>
+                                                            <%# Util.GetMoney(Eval("MRP")) %>
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
                                                     <asp:TemplateField HeaderText="Category" HeaderStyle-Width="15%">
