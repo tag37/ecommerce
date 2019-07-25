@@ -3599,16 +3599,20 @@
     <Content Include="assets\plugins\timepicker\bootstrap-timepicker.min.css" />
     <Content Include="assets\plugins\timepicker\bootstrap-timepicker.min.js" />
     <Content Include="default.aspx" />
+    <Content Include="view\add-customer.aspx" />
     <Content Include="view\add-product.aspx" />
     <Content Include="view\category\category.aspx" />
     <Content Include="view\dashboard.aspx" />
     <Content Include="view\manage-category.aspx" />
+    <Content Include="view\manage-customer.aspx" />
     <Content Include="view\manage-orders.aspx" />
     <Content Include="view\manage-products.aspx" />
     <Content Include="view\manage-supplier.aspx" />
     <Content Include="view\product-inward.aspx" />
     <Content Include="view\supplier-approval.aspx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="default.aspx.cs">
@@ -3619,11 +3623,19 @@
       <DependentUpon>default.aspx</DependentUpon>
     </Compile>
     <Compile Include="model\Category.cs" />
+    <Compile Include="model\Customer.cs" />
     <Compile Include="model\ParentCategory.cs" />
     <Compile Include="model\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="util\SqlHelper.cs" />
     <Compile Include="util\Util.cs" />
+    <Compile Include="view\add-customer.aspx.cs">
+      <DependentUpon>add-customer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="view\add-customer.aspx.designer.cs">
+      <DependentUpon>add-customer.aspx</DependentUpon>
+    </Compile>
     <Compile Include="view\add-product.aspx.cs">
       <DependentUpon>add-product.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3658,6 +3670,13 @@
     </Compile>
     <Compile Include="view\manage-category.aspx.designer.cs">
       <DependentUpon>manage-category.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="view\manage-customer.aspx.cs">
+      <DependentUpon>manage-customer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="view\manage-customer.aspx.designer.cs">
+      <DependentUpon>manage-customer.aspx</DependentUpon>
     </Compile>
     <Compile Include="view\manage-orders.aspx.cs">
       <DependentUpon>manage-orders.aspx</DependentUpon>

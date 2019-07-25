@@ -171,7 +171,7 @@
                             </ul>
                         </li>
                         <li><a href="#"><i class="fa fa-users"></i><span>Manage Users</span></a></li>
-                        <li><a href="#"><i class="fa fa-users"></i><span>Manage Customers</span></a></li>
+                        <li><a href="manage-customer.aspx"><i class="fa fa-users"></i><span>Manage Customers</span></a></li>
                     </ul>
                 </section>
                 <!-- /.sidebar -->

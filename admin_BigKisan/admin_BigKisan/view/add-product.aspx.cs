@@ -160,7 +160,7 @@ namespace admin_BigKisan.view
 
         private void SendNotificationOnUi(Control control, string function)
         {
-            ScriptManager.RegisterClientScriptBlock(upProduct, GetType(), "disp_confirm",
+            ScriptManager.RegisterClientScriptBlock(control, GetType(), "disp_confirm",
                 $"<script>{function} </script>",
                 false);
         }
