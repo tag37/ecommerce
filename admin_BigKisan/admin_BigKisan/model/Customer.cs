@@ -30,5 +30,7 @@ namespace admin_BigKisan.model
             }
             return CustomerId = result.TryGetInt();
         }
+
+
     }
 }

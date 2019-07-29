@@ -31,6 +31,15 @@ namespace admin_BigKisan.view {
         protected global::System.Web.UI.WebControls.DropDownList ddlOrderType;
         
         /// <summary>
+        /// sqlOrdertype control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource sqlOrdertype;
+        
+        /// <summary>
         /// txtFromDate control.
         /// </summary>
         /// <remarks>
@@ -49,22 +58,40 @@ namespace admin_BigKisan.view {
         protected global::System.Web.UI.WebControls.TextBox txtToDate;
         
         /// <summary>
-        /// ddlAssignedTo control.
+        /// ddlSupplier control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlAssignedTo;
+        protected global::System.Web.UI.WebControls.DropDownList ddlSupplier;
         
         /// <summary>
-        /// lbtnSearch control.
+        /// sqlSupplier control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbtnSearch;
+        protected global::System.Web.UI.WebControls.SqlDataSource sqlSupplier;
+        
+        /// <summary>
+        /// hdnSupId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdnSupId;
+        
+        /// <summary>
+        /// btnSearch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnSearch;
         
         /// <summary>
         /// lbtnExport control.

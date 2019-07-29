@@ -1,47 +1,64 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+using admin_BigKisan.model;
+using admin_BigKisan.util;
 
 namespace admin_BigKisan.view
 {
-	public partial class manage_orders : System.Web.UI.Page
-	{
-		protected void Page_Load(object sender, EventArgs e)
-		{
-			dgvDetails.DataSource = new DataTable();
-			dgvDetails.DataBind();
+    public partial class manage_orders : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            Initialize();
+        }
 
-			GetTitleH1();
-		}
+        public void Initialize()
+        {
+            BindOrderDetails();
+        }
 
-		private void GetTitleH1()
-		{
-			string str = Request.QueryString["type"];
-			string res = "Manage Orders (All)";
-			switch (str)
-			{
-				case "1":
-					res = "Manage Orders (New Orders)";
-					break;
+        public void BindOrderDetails()
+        {
+            var orderType = ddlOrderType.SelectedValue.TryGetInt();
+            var fromDate = txtFromDate.Text.IsDateString() ? txtFromDate.Text : null;
+            var toDate = txtToDate.Text.IsDateString() ? txtToDate.Text : null;
+            var supplier = ddlSupplier.SelectedValue.TryGetInt();
+            var result = Order.GetOrders(orderType, fromDate, toDate, supplier);
+            dgvDetails.DataSource = result;
+            dgvDetails.DataBind();
+        }
 
-				case "2":
-					res = "Manage Orders (Dispatched)";
-					break;
 
-				case "3":
-					res = "Manage Orders (Delivered)";
-					break;
 
-				case "4":
-					res = "Manage Orders (Cancelled)";
-					break;
-			}
+        private void GetTitleH1()
+        {
+            var str = Request.QueryString["type"];
+            var res = "Manage Orders (All)";
+            switch (str)
+            {
+                case "1":
+                    res = "Manage Orders (New Orders)";
+                    break;
 
-			h1Title.InnerHtml = res;
-		}
-	}
+                case "2":
+                    res = "Manage Orders (Dispatched)";
+                    break;
+
+                case "3":
+                    res = "Manage Orders (Delivered)";
+                    break;
+
+                case "4":
+                    res = "Manage Orders (Cancelled)";
+                    break;
+            }
+
+            h1Title.InnerHtml = res;
+        }
+
+        protected void btnSearch_OnClick(object sender, EventArgs e)
+        {
+            BindOrderDetails();
+        }
+    }
 }

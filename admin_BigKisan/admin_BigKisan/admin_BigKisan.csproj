@@ -3624,8 +3624,10 @@
     </Compile>
     <Compile Include="model\Category.cs" />
     <Compile Include="model\Customer.cs" />
+    <Compile Include="model\Order.cs" />
     <Compile Include="model\ParentCategory.cs" />
     <Compile Include="model\Product.cs" />
+    <Compile Include="model\Supplier.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="util\SqlHelper.cs" />
     <Compile Include="util\Util.cs" />
