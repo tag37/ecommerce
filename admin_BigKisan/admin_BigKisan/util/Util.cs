@@ -62,5 +62,14 @@ namespace admin_BigKisan.util
             }
             return defaultValue;
         }
+
+        public static string GetString(this object value)
+        {
+            if (value == null)
+            {
+                return String.Empty;
+            }
+            return value.ToString();
+        }
     }
 }

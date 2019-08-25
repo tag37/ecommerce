@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Web.UI.WebControls;
 using admin_BigKisan.model;
 using admin_BigKisan.util;
 
@@ -9,7 +10,10 @@ namespace admin_BigKisan.view
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Initialize();
+            if (!Page.IsPostBack)
+            {
+                Initialize();
+            }
         }
 
         public void Initialize()
@@ -27,8 +31,6 @@ namespace admin_BigKisan.view
             dgvDetails.DataSource = result;
             dgvDetails.DataBind();
         }
-
-
 
         private void GetTitleH1()
         {
@@ -59,6 +61,21 @@ namespace admin_BigKisan.view
         protected void btnSearch_OnClick(object sender, EventArgs e)
         {
             BindOrderDetails();
+        }
+
+        protected void dgvDetails_OnRowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "Delete")
+            {
+                var orderId = e.CommandArgument.TryGetInt();
+                Order.DeleteOrder(orderId);
+                BindOrderDetails();
+            }
+        }
+
+        protected void dgvDetails_OnRowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+
         }
     }
 }

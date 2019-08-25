@@ -19,5 +19,25 @@ namespace admin_BigKisan.model
             var result = SqlHelper.ExecuteDataset(Util.ConnectionString, "spGetOrderList", sqlParameters);
             return result.Tables[0];
         }
+
+        public static void DeleteOrder(int orderId)
+        {
+            object[] sqlParameters =
+            {
+                    new SqlParameter("@OrderId", orderId)
+                };
+
+            SqlHelper.ExecuteNonQuery(Util.ConnectionString, "spDeleteOrder", sqlParameters);
+        }
+
+        public static DataSet GetOrder(int orderId)
+        {
+            object[] sqlParameters =
+            {
+                new SqlParameter("@OrderId", orderId)
+            };
+
+            return SqlHelper.ExecuteDataset(Util.ConnectionString, "spOrderDetailsGet", sqlParameters);
+        }
     }
 }

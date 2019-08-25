@@ -1,7 +1,5 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/view/BigKisanMaster.Master" AutoEventWireup="true" CodeBehind="add-product.aspx.cs" Inherits="admin_BigKisan.view.add_product" %>
 
-<%@ Import Namespace="admin_BigKisan.util" %>
-
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server"></asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <asp:ScriptManager runat="server"></asp:ScriptManager>
@@ -91,7 +89,7 @@
                                         <asp:TextBox runat="server" CssClass="form-control" ID="txtMRP" placeholder="MRP" />
                                         <asp:RequiredFieldValidator runat="server" ControlToValidate="txtMRP" ErrorMessage="MRP is required" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
                                         <asp:RegularExpressionValidator runat="server" ValidationExpression="(^\d*\.?\d*[1-9]+\d*$)|(^[1-9]+\d*\.\d*$)" ControlToValidate="txtMRP" Display="Dynamic" ErrorMessage="Incorrect MRP" ForeColor="Red"></asp:RegularExpressionValidator>
-                                    </div>
+                                        </div>
                                     <div class="form-group">
                                         <label>Available Stock</label>
                                         <asp:TextBox runat="server" CssClass="form-control" ID="txtStock" placeholder="Available Stock" />
@@ -148,7 +146,6 @@
                             </div>
                             <div class="box-body">
                                 <div class="col-md-8">
-
                                     <asp:GridView runat="server" ID="gvAttributes" AutoGenerateColumns="false" CssClass="table table-bordered table-striped"
                                         DataKeyNames="AttributeId" EmptyDataRowStyle-Font-Bold="true" EmptyDataRowStyle-ForeColor="Red">
                                         <Columns>
@@ -174,7 +171,6 @@
                                             </asp:TemplateField>
                                         </Columns>
                                     </asp:GridView>
-
                                 </div>
                             </div>
                             <div class="box-body">

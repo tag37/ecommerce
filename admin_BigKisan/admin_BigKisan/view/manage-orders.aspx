@@ -91,7 +91,7 @@
                             <div class="box-body">
                                 <div class="table-responsive table-bordered">
                                     <asp:GridView runat="server" ID="dgvDetails" AutoGenerateColumns="false" CssClass="table table-bordered table-striped" ShowHeaderWhenEmpty="true"
-                                        EmptyDataText="No data available" EmptyDataRowStyle-Font-Bold="true" EmptyDataRowStyle-ForeColor="Red">
+                                        EmptyDataText="No data available" EmptyDataRowStyle-Font-Bold="true" EmptyDataRowStyle-ForeColor="Red" OnRowCommand="dgvDetails_OnRowCommand" OnRowDeleting="dgvDetails_OnRowDeleting">
                                         <Columns>
                                             <asp:TemplateField HeaderText="Sr No" HeaderStyle-Width="5%">
                                                 <ItemTemplate>
@@ -115,7 +115,7 @@
                                             </asp:TemplateField>
                                             <asp:TemplateField HeaderText="Order Type" HeaderStyle-Width="20%">
                                                 <ItemTemplate>
-                                                    <span runat="server" id="lblAvailableStock" class='<%# (Convert.ToString(Eval("OrderType"))) %>'><%# Eval("OrderType") %></span>
+                                                    <span runat="server" class='<%# (Convert.ToString(Eval("OrderType"))) %>'><%# Eval("OrderType") %></span>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
                                             <asp:TemplateField HeaderText="Total Cost" HeaderStyle-Width="12%">
@@ -126,14 +126,14 @@
                                             </asp:TemplateField>
                                             <asp:TemplateField HeaderText="Status" HeaderStyle-Width="10%">
                                                 <ItemTemplate>
-                                                    <span runat="server" id="lblAvailableStock" class="label label-success"><%# Eval("OrderStatus") %></span>
+                                                    <span runat="server" class="label label-success"><%# Eval("OrderStatus") %></span>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
                                             <asp:TemplateField HeaderText="Action" HeaderStyle-Width="5%">
                                                 <ItemTemplate>
                                                     <div align="center">
-                                                        <a href="new-order.aspx?oid=<%# Eval("OrderID") %>&id=<%#  Eval("CustomerId") %>"><i class="fa fa-edit"></i></a>
-                                                        <asp:LinkButton runat="server" CausesValidation="false" CommandName="DeleteOrder" OnClientClick="if ( ! DeleteConfirmation()) return false;" CommandArgument='<%#  Eval("OrderID") + "$" + Eval("OrderStatus") %>'><i class="fa fa-trash-o text-red"></i></asp:LinkButton>
+                                                        <a href="view_order.aspx?orderId=<%# Eval("OrderId") %>"><i class="fa fa-eye"></i></a>
+                                                        <asp:LinkButton runat="server" CausesValidation="false" CommandName="Delete" OnClientClick="if ( ! DeleteConfirmation()) return false;" CommandArgument='<%# Eval("OrderID") %>'><i class="fa fa-trash-o text-red"></i></asp:LinkButton>
                                                     </div>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
@@ -147,6 +147,11 @@
             </div>
         </div>
     </section>
+    <script>
+        function DeleteConfirmation() {
+            return confirm('Do you want to delete this order?');
+        }
+    </script>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="JavascriptContent" runat="server">
 </asp:Content>

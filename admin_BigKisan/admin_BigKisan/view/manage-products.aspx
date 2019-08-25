@@ -51,7 +51,7 @@
                                 <div class="table-responsive table-bordered">
                                     <asp:UpdatePanel runat="server">
                                         <ContentTemplate>
-                                            <asp:GridView runat="server" ID="dgvDetails" AutoGenerateColumns="false" CssClass="table table-bordered table-striped" DataSourceID="sqlDataSourceProduct" ShowHeaderWhenEmpty="true"
+                                            <asp:GridView runat="server" ID="dgvDetails" AutoGenerateColumns="false" CssClass="table table-bordered table-striped" DataSourceID="sqlDataSourceProduct" ShowHeaderWhenEmpty="true" OnRowDeleting="dgvDetails_OnRowDeleting"
                                                 EmptyDataText="No data available" EmptyDataRowStyle-Font-Bold="true" EmptyDataRowStyle-ForeColor="Red" PageSize="10" AllowPaging="True" OnRowCommand="dgvDetails_OnRowCommand">
                                                 <Columns>
                                                     <asp:TemplateField HeaderText="Sr No" HeaderStyle-Width="5%">

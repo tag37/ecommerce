@@ -27,5 +27,10 @@ namespace admin_BigKisan.view
                 Response.Redirect("~/view/add-product.aspx"); ;
             }
         }
+
+        protected void dgvDetails_OnRowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
