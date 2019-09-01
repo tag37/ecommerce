@@ -13,30 +13,12 @@ namespace admin_BigKisan.view {
     public partial class manage_customer {
         
         /// <summary>
-        /// dgvDetails control.
+        /// dgCustomerList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView dgvDetails;
-        
-        /// <summary>
-        /// sqlDataSourceProduct control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource sqlDataSourceProduct;
-        
-        /// <summary>
-        /// hdnCategoryID control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdnCategoryID;
+        protected global::System.Web.UI.WebControls.GridView dgCustomerList;
     }
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using admin_BigKisan.model;
 
 namespace admin_BigKisan.view
 {
@@ -11,12 +12,26 @@ namespace admin_BigKisan.view
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            BindCustomers();
         }
 
-        protected void dgvDetails_OnRowCommand(object sender, GridViewCommandEventArgs e)
+        public void BindCustomers()
         {
-            throw new NotImplementedException();
+            var customer = new Customer();
+            var customerList = customer.GetCustomerList();
+            dgCustomerList.DataSource = customerList.Tables[0];
+            dgCustomerList.DataBind();
+        }
+
+        protected void dgCustomerList_OnRowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "Edit")
+            {
+                var cookie = new HttpCookie("CustomerId");
+                cookie.Value = e.CommandArgument.ToString();
+                Response.Cookies.Add(cookie);
+                Response.Redirect("~/view/add-customer.aspx");
+            }
         }
     }
 }

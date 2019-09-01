@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Data;
+using System.Data.SqlClient;
 using System.Globalization;
 
 namespace admin_BigKisan.util
@@ -70,6 +72,30 @@ namespace admin_BigKisan.util
                 return String.Empty;
             }
             return value.ToString();
+        }
+
+        public static DataSet GetStateList()
+        {
+            return SqlHelper.ExecuteDataset(ConnectionString, CommandType.StoredProcedure, "spGetAllState");
+        }
+
+        public static DataSet GetCityList(string stateCode)
+        {
+            SqlParameter[] sqlParameters =
+            {
+                new SqlParameter("@StateCode", stateCode)
+            };
+            return SqlHelper.ExecuteDataset(ConnectionString, CommandType.StoredProcedure, "spGetAllCity", sqlParameters);
+        }
+
+        public static DataSet GetVillageList(string stateCode, string cityName)
+        {
+            SqlParameter[] sqlParameters =
+            {
+                new SqlParameter("@CityName", cityName),
+                new SqlParameter("@StateCode", stateCode)
+            };
+            return SqlHelper.ExecuteDataset(ConnectionString, CommandType.StoredProcedure, "spGetAllVillages", sqlParameters);
         }
     }
 }

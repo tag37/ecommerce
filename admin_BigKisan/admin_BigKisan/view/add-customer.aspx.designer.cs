@@ -76,15 +76,6 @@ namespace admin_BigKisan.view {
         protected global::System.Web.UI.WebControls.DropDownList ddlState;
         
         /// <summary>
-        /// sqlState control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource sqlState;
-        
-        /// <summary>
         /// ddlCity control.
         /// </summary>
         /// <remarks>
@@ -92,15 +83,6 @@ namespace admin_BigKisan.view {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlCity;
-        
-        /// <summary>
-        /// sqlCity control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource sqlCity;
         
         /// <summary>
         /// ddlVillage control.
@@ -121,22 +103,13 @@ namespace admin_BigKisan.view {
         protected global::System.Web.UI.WebControls.HiddenField hdnVillage;
         
         /// <summary>
-        /// sqlVillage control.
+        /// lblPinCode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource sqlVillage;
-        
-        /// <summary>
-        /// txtPinCode control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPinCode;
+        protected global::System.Web.UI.WebControls.Label lblPinCode;
         
         /// <summary>
         /// btnAddAddress control.
@@ -148,13 +121,13 @@ namespace admin_BigKisan.view {
         protected global::System.Web.UI.WebControls.LinkButton btnAddAddress;
         
         /// <summary>
-        /// rptCustomers control.
+        /// btnUpdateAddress control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptCustomers;
+        protected global::System.Web.UI.WebControls.LinkButton btnUpdateAddress;
         
         /// <summary>
         /// btnSubmit control.
@@ -166,6 +139,15 @@ namespace admin_BigKisan.view {
         protected global::System.Web.UI.WebControls.LinkButton btnSubmit;
         
         /// <summary>
+        /// btnUpdate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnUpdate;
+        
+        /// <summary>
         /// btnReset control.
         /// </summary>
         /// <remarks>
@@ -173,5 +155,14 @@ namespace admin_BigKisan.view {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton btnReset;
+        
+        /// <summary>
+        /// rptCustomers control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater rptCustomers;
     }
 }
