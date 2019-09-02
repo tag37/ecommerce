@@ -85,5 +85,15 @@ namespace admin_BigKisan.model
 
             SqlHelper.ExecuteNonQuery(Util.ConnectionString, "spDeleteCustomerAddress", sqlParameters);
         }
+
+        public static void DeleteCustomer(int customerId)
+        {
+            object[] sqlParameters =
+            {
+                new SqlParameter("@CustomerId", customerId)
+            };
+
+            SqlHelper.ExecuteNonQuery(Util.ConnectionString, "spDeleteCustomerDetails", sqlParameters);
+        }
     }
 }

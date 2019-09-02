@@ -26,11 +26,11 @@
                                     <br />
                                     <a href="add-customer.aspx" class="btn btn-primary"><i class="fa fa-plus"></i>&nbsp;&nbsp;Add Customer</a>
                                 </div>
-                                <div class="table-responsive table-bordered">
-                                    <asp:UpdatePanel runat="server">
-                                        <ContentTemplate>
+                                <asp:UpdatePanel runat="server">
+                                    <ContentTemplate>
+                                        <div class="table-responsive table-bordered">
                                             <asp:GridView runat="server" ID="dgCustomerList" AutoGenerateColumns="false" CssClass="table table-bordered table-striped" ShowHeaderWhenEmpty="true"
-                                                EmptyDataText="No data available" EmptyDataRowStyle-Font-Bold="true" EmptyDataRowStyle-ForeColor="Red" PageSize="10" AllowPaging="True" OnRowCommand="dgCustomerList_OnRowCommand">
+                                                EmptyDataText="No data available" EmptyDataRowStyle-Font-Bold="true" EmptyDataRowStyle-ForeColor="Red" PageSize="10" AllowPaging="True" OnRowCommand="dgCustomerList_OnRowCommand" OnRowDeleting="dgCustomerList_OnRowDeleting">
                                                 <Columns>
                                                     <asp:TemplateField HeaderText="Sr No" HeaderStyle-Width="5%">
                                                         <ItemTemplate>
@@ -57,17 +57,16 @@
                                                         <ItemTemplate>
                                                             <div align="center">
                                                                 <asp:LinkButton runat="server" CausesValidation="false" CommandName="Edit" CommandArgument='<%# Eval("CustomerId") %>' CssClass=""><i class="fa fa-edit text-blue"></i></asp:LinkButton>
-                                                                <asp:LinkButton runat="server" CausesValidation="false" OnClientClick="if ( ! DeleteConfirmation()) return false;" CommandName="Delete" CommandArgument='<%# Eval("CustomerId") + "$" + Eval("CustomerName") %>'><i class="fa fa-trash text-red"></i></asp:LinkButton>
+                                                                <asp:LinkButton runat="server" CausesValidation="false" OnClientClick="if ( ! DeleteConfirmation()) return false;" CommandName="Delete" CommandArgument='<%# Eval("CustomerId") %>'><i class="fa fa-trash text-red"></i></asp:LinkButton>
                                                             </div>
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
                                                 </Columns>
                                                 <PagerStyle CssClass="gridview" HorizontalAlign="Right"></PagerStyle>
                                             </asp:GridView>
-
-                                        </ContentTemplate>
-                                    </asp:UpdatePanel>
-                                </div>
+                                        </div>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
                             </div>
                         </div>
                     </div>

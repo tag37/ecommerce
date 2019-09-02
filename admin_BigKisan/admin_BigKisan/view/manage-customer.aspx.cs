@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using admin_BigKisan.model;
+using admin_BigKisan.util;
+using System;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using admin_BigKisan.model;
 
 namespace admin_BigKisan.view
 {
@@ -12,7 +11,10 @@ namespace admin_BigKisan.view
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            BindCustomers();
+            if (!Page.IsPostBack)
+            {
+                BindCustomers();
+            }
         }
 
         public void BindCustomers()
@@ -32,6 +34,16 @@ namespace admin_BigKisan.view
                 Response.Cookies.Add(cookie);
                 Response.Redirect("~/view/add-customer.aspx");
             }
+
+            if (e.CommandName == "Delete")
+            {
+                Customer.DeleteCustomer(e.CommandArgument.TryGetInt());
+                BindCustomers();
+            }
+        }
+
+        protected void dgCustomerList_OnRowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
         }
     }
 }
